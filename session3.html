@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1102</title>
+</head>
+<body>
+    <!--phần đầu-->
+    <div class="wrapper ">
+        <header>header</header>
+
+        <nav>nav</nav>
+        <div class="main-content">
+            <article>
+                <section>
+                    section 1
+                </section>
+                <section>
+                    section 2
+                </section>
+
+            </article>
+
+            <aside>aside</aside>
+        
+        </div>
+
+        <footer>foorter</footer>
+
+        </div>
+
+        <style>
+            .wrapper {
+             width: 1028px;
+             margin: 0px auto;
+            }
+            header {
+                background: orange;
+            }
+            nav{
+                background: orange;
+                margin-top: 10px;
+            }
+            .main-content{
+                display: block;
+                position: relative;
+                overflow: hidden;
+                margin-top:10px;
+            }
+            .main-content article{
+                float:left;
+                background-color: orange;
+                width: 80%;
+            }
+
+            .main-content aside{
+
+                float:right;
+                width: 18%;
+                background: orange;
+            }
+            footer{
+                background:  orange;
+                margin-top:10px;
+            }
+        </style>
+        <audio src="" controls display></audio>
+        <video src="video.mp4.mp4" controls width="500" height="400"></video>
+        <details >
+            <summary>nội dung cần ẩn</summary>
+            <p>xin chào cac bạn</p>
+        </details>
+        <from style="background-color: red;border:1px solid green">
+            <input type="range" min="10" max="50" name="age"/>
+            <input list="provinces" name="provinces"/>
+            <datalist id="provinces">
+                <option>ha noi</option>
+                <option>hai phong</option>
+                <option>quang ninh</option>
+            </datalist>
+        </from>
+        
+
+   
+</body>
+</html>
