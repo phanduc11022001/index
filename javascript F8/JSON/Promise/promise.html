@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Promise
+
+    // Sync :  Đồng bộ là thằng nào viết trc thì chạy trước
+    //  - chạy theo luông tuần tự
+    //  - stTimeout, setInterval , fecth, XMLHttpRequest , file reading     
+    // Async :  
+    // nỗi đau 
+    // lý thuyết
+    // thực hành
+
+
+    // nỗi đau :
+    // Callback hell
+    // Pyramid of doom
+
+
+    // Promise : 
+    // Memorry leek : rỏ rỉ bộ nhớ
+    var promise = new Promise(
+
+        // Executor
+        function(resolve, reject) {
+            // Logic
+            // thành công: resolve
+            // thất bại : reject
+
+            // Fake API 
+            reject('có lỗi !')
+        }
+    )
+    
+    ;
+
+    promise
+        .then(function(courrse) {  
+                console.log(courrse)
+        
+    })
+        .catch(function(error) {
+            console.log(error)
+    }) 
+
+        .finally(function() {
+            console.log('Done')
+    })
+</script>
+</html>

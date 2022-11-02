@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+
+    // khi tạo 1 hàm reduce gọi lại thì trong vòng lập for sẽ có 4 tham số nó có 4 tham số : 
+    // 1. biến tích trữ
+    // 2. value
+    // 3. index
+    // 4. array gốc
+
+
+    // trường hợp 1 truyền inititalvalue
+
+    /*
+    Array.prototype.miss = function(callback, result){
+        for(let i = 0; i < this.length ; i++){
+         result = callback(result, this[i], i, this)
+        }
+        return result;
+    }
+    
+
+   const number = [1,2,3,4,5]
+
+    const result = number.miss((accumunlator, currebtvalue) => {
+        return accumunlator + currebtvalue;
+       }, 0)
+       console.log(result)
+       */
+
+    // trường hợp 2 không truyền initivalue
+    /*
+
+    Array.prototype.reduce2 = function (callback, result) {
+        let i = 0;
+        if (arguments.length < 2) {
+            i = 1;
+            result = this[0]
+        }
+        for (; i < this.length; i++) {
+            result = callback(result, this[i], i, this)
+        }
+        return result;
+    }
+
+    var number = [1, 2, 3, 4, 5]
+
+    var total = number.reduce2((acumunlator, currenvalue) => {
+        return acumunlator + currenvalue;
+    })
+    console.log(total)
+    */
+    /*
+   function arrToObj(arr){
+    var result = arr.reduce((a, b)=>{
+        a[b[0]] = b[1]
+        return a;
+    }, [])
+    return result;
+   }
+
+    var arr = [
+        ['name', 'Sơn Đặng',
+        
+        ],
+        ['age', 18],
+    ];
+    console.log(arrToObj(arr));// [ name: 'Sơn Đặng', age: 18 ]
+
+    */
+
+    //Callback 
+
+    Array.prototype.forEach2 = function (callback) {
+        for (var index in this) {
+            if(this.hasOwnProperty(index)){
+                callback(this[index], index, this)
+            }
+           
+        }
+    }
+
+    var courses = new Array(1000);
+    courses.push('Phan ba duc', 'dinh van can');
+    courses.forEach2(function (courses, index, array) {
+        console.log(courses, index, array)
+    })
+</script>
+
+</html>

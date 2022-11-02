@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var coures = [
+    {
+        id: 1,
+        name: 'Phan Ba Duc',
+        coin: 210
+    },
+    {
+        id: 2,
+        name: 'Dinh Van Can',
+        coin: 180
+    },
+    {
+        id: 3,
+        name: 'Nguyen Van An',
+        coin: 50
+    }
+    ]
+    // map()
+
+    function courehand(coures, index) {
+        return {
+            id : coures.id,
+            name: `họ và tên : ${coures.name}`,
+            coin: coures.coin,
+            coinText: `tăng lên : ${coures.coin}`,
+            index: index
+        }
+    }
+    
+    var newcourese = coures.map(courehand);
+    console.log(newcourese)
+
+    
+</script>
+</html>

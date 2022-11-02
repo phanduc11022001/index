@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+// hàm đệ quy có 2 phần :
+
+/*
+    1.phần cơ sở 
+    2.phần đệ quy
+*/
+function youlove(count){
+    // phần cơ sở: điều kiện thoát đệ quy là count <=0;
+    if(count <=0){
+        return;
+    }
+    
+    //xử lý logic cơ bản 
+    console.log("Làm người yêu tui nha!")
+
+    //phần đệ quy: gọi lại chính hàm youlove
+    youlove(count -1);
+   
+}
+ youlove(10)
+</script>
+</html>

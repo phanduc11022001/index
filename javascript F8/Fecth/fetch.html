@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="post-block"></ul>
+</body>
+
+<script>
+    /*
+
+    1. Font-end: Xây dưng giao diện người dùng
+    2. Back-end: Xây dựng logic xử lý
+    + Cở sở dữ liệu
+    API -> Application programing interface
+    Cổng giao tiếp giữa các PM
+    Backend (OK) -> API (URL) -> Fecth -> JSON/XML
+    -> JSON.parse -> Javascript types
+    -> render ra giao diện với HTML
+    */
+
+   var postAPI = "https://jsonplaceholder.typicode.com/posts"
+
+  fetch(postAPI)
+    .then(function(response) {
+        return response.json();
+    })
+
+    // rander ra html
+    .then(function(posts) {
+        var htmls = posts.map(function(post) {
+            return ` <li>
+            <h2>${post.title}</h2>
+            <p>${post.body}</p>
+            </li>
+        `
+        })
+        // nối chuỗi để chuyển dữ liệu
+        var html = htmls.join('')
+        document.getElementById('post-block').innerHTML = html
+    })
+
+/*
+   fetch(postAPI)
+    .then(function(response){
+        return response.json();
+        // JSON.parse -> Javascript
+    })
+
+    .then(function(posts) {
+       var htmls = posts.map(function(post){
+        return `<li>
+            <h2>${post.title}</h2>
+            <p>${post.body}</p>
+                </li>`
+       })
+       var html = htmls.join('');
+       document.getElementById('post-block').innerHTML = html
+    })
+    .catch(function(err){
+        console.log('có lỗi kìa mấy ba')
+    })
+
+*/
+</script>
+</html>

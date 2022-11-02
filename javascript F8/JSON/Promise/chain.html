@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+/*
+   function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    })
+   } 
+   sleep(1000)
+    .then(function() {
+        console.log(1)
+        return sleep(1000)
+    })
+    .then(function() {
+        console.log(2)
+        return sleep(1000)
+    })
+    .then(function() {
+        console.log(3)
+        return sleep(1000)
+    }).then(function() {
+        console.log(4)
+        return sleep(1000)
+    }).then(function() {
+        console.log(5)
+        return sleep(1000)
+    })
+    */
+
+    // hàm kiểm tra bằng chain
+
+    /*
+    var promise = new Promise(function(resolve, reject) {
+        if(1 > 2) {
+            resolve('bài này quá khó');
+        }
+         else return reject('thế mà cũng làm sai được')
+    
+    });
+
+
+    promise 
+        .then(function(data) {
+            return new Promise(function(resolve) {
+                setTimeout(function() {
+                    resolve()
+                }, 3000)
+            })
+        })
+        .then(function(){
+            return promise
+        })
+        .then(function(data) {
+            console.log(data)
+        })
+
+        .catch(function(data) {
+            return new Promise(function(reject){
+                setTimeout(function(){
+                reject()
+            }, 1000)
+            })
+            
+        })
+        .then(function(){
+            return promise
+        })
+        .catch(function(data) {
+            console.log(data)
+        })
+        */
+</script>
+</html>

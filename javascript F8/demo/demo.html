@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cố lên nào người anh em</h1>
+    
+</body>
+<script>
+   /*
+    var courses =  [
+    'Javascript',
+    'PHP',
+    'Ruby'
+    ];
+
+
+    // map2  hàm tự tạo
+    Array.prototype.map2 = function(callback){
+
+        var output = []
+        var arraylength = this.length;
+        for(let i = 0; i< arraylength ; i++) {
+           var result = callback(this[i], i);
+            output.push(result)
+        }
+        return output;
+    }
+   
+  
+    var htmls = courses.map2((courses) => {
+        return `<h2>${courses}</h2>`
+    })
+
+    console.log(htmls)
+    */
+    //  bài tâp tạo hàm mới từ nhưng hàm đã có sẵn forEach, find, fiter, reduce
+
+    // 1 reduce
+
+    var courses =  [
+    {
+        name: 'Javascript',
+        coin: 210,
+    },
+    {
+        name: 'PHP',
+        coin: 300,
+    },
+    {
+        name: 'Ruby',
+        coin: 270,
+    },
+    ];
+
+    
+   Array.prototype.reduce2 = function(callback, result){
+    var arrlength = this.length
+    for(let i = 0 ; i < arrlength ; i++){
+    var result = callback(result, this[i], i, this)
+    }
+    return result;
+   }
+  
+   var toatalcoin = courses.reduce2(function(a, b){
+    return a + b.coin;
+    
+    
+   },0)
+   
+   console.log(toatalcoin)
+
+    /*
+    // hàm tự tạo forEach
+    var courses = [
+    {
+       id: 1,
+       name: 'Javascript',
+       coin: 250
+    },
+    {
+       id: 2,
+       name: 'HTML, CSS',
+       coin: 0
+    },
+    {
+       id: 3,
+       name: 'Ruby',
+       coin: 0
+    },
+    {
+       id: 4,
+       name: 'PHP',
+       coin: 400
+    },
+    {
+       id: 5,
+       name: 'ReactJS',
+       coin: 500
+    },
+    {
+       id: 6,
+       name: 'Ruby',
+       coin: 100
+    }
+ ];
+ 
+
+Array.prototype.forEach2 = function(callback) {
+    arrLength = this.length;
+    for(var i = 0; i < arrLength; i++) {
+        callback(this[i], i);
+    }
+};
+
+courses.forEach2(function(course, index){
+    console.log(index, course);
+});
+
+
+    // hàm tự tạo fiter
+var courses = [
+    {
+       id: 1,
+       name: 'Javascript',
+       coin: 250
+    },
+    {
+       id: 2,
+       name: 'HTML, CSS',
+       coin: 0
+    },
+    {
+       id: 3,
+       name: 'Ruby',
+       coin: 0
+    },
+    {
+       id: 4,
+       name: 'PHP',
+       coin: 400
+    },
+    {
+       id: 5,
+       name: 'ReactJS',
+       coin: 500
+    },
+    {
+       id: 6,
+       name: 'Ruby',
+       coin: 100
+    }
+ ];
+ 
+Array.prototype.filter2 = function(callback) {
+    arrLength = this.length;
+    var arrResults = [];
+    for(var i = 0; i < arrLength; i++) {
+        var result = callback(this[i], i);
+        if (result) {
+            arrResults.push(this[i]);
+        } else continue;
+    };
+    return arrResults;
+};
+
+var htmls = courses.filter2(function(course, index) {
+    return course.name === 'Javascript';
+});
+
+console.log(htmls);
+
+//hàm tự tạo find2
+
+
+var courses = [
+    {
+       id: 1,
+       name: 'Javascript',
+       coin: 250
+    },
+    {
+       id: 2,
+       name: 'HTML, CSS',
+       coin: 0
+    },
+    {
+       id: 3,
+       name: 'Ruby',
+       coin: 0
+    },
+    {
+       id: 4,
+       name: 'PHP',
+       coin: 400
+    },
+    {
+       id: 5,
+       name: 'ReactJS',
+       coin: 500
+    },
+    {
+       id: 6,
+       name: 'Ruby',
+       coin: 100
+    }
+ ];
+ 
+Array.prototype.find2 = function(callback) {
+    arrLength = this.length;
+    for(var i = 0; i < arrLength; i++) {
+       var result = callback(this[i], i);
+       if(result) return this[i];
+       else continue;
+    };
+}
+
+var htmls = courses.find2(function(course, index){
+    return course.name === 'Ruby';
+});
+
+console.log(htmls);
+*/
+
+</script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // callback ?
+
+    // hàm (function) được truyền qua đối số
+    // khi gọi hàm khác
+
+    // 1. là hàm
+    // 2. Được truyền qua đối số
+
+    Array.prototype.reduce2 = function(callback){
+        var output = [], arraylength = this.length;
+        for(let i = 0; i< arraylength; i++){
+           var result = callback(this[i], i);
+           output.push(result)
+        }
+        return output;
+    }
+
+    var courses =  [
+    'Javascript',
+    'PHP',
+    'Ruby'
+    ];
+
+    var htmls = courses.reduce2(function(courses){
+        return `<h2>${courses}</h2>`
+    })
+
+    console.log(htmls)
+
+   
+    
+</script>
+</html>

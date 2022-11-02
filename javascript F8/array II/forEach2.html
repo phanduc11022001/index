@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    Array.prototype.forEach2 = function (callback) {
+        for (var index in this) {
+            if(this.hasOwnProperty(index)){
+                callback(this[index], index, this)
+            }
+           
+        }
+    }
+
+    var courses = new Array(1000);
+    courses.push('Phan ba duc', 'dinh van can');
+    courses.forEach2(function (courses, index, array) {
+        console.log(courses, index, array)
+    })
+</script>
+</html>

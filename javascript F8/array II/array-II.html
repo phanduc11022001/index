@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        Array method:
+        forEach() duyet qu tung phan tu cua mang  
+        every() kiểm các phần tử của mảng thỏa mãn điều kiện
+        some() kiểm tra điều kiện thấy đúng thì dừng ngay không kiểm tra nữa
+        find() tìm kiếm 
+        filter()  tìm kiểm và trả về tất cả các phần tử thỏa mãn điều kiện
+        map() dùng để thay đổi chỉnh sửa , lấy các dữ liệu ra
+        reduce()
+    
+    */
+    var coures = [
+    {
+        id: 1,
+        name: 'Phan Ba Duc',
+        coin: 210
+    },
+    {
+        id: 2,
+        name: 'Dinh Van Can',
+        coin: 180
+    },
+    {
+        id: 3,
+        name: 'Nguyen Van An',
+        coin: 50
+    }
+    ]
+     /*
+     forEach() duyet qu tung phan tu cua mang 
+
+
+    coures.forEach(function(coure, index){
+       console.log(index, coure);
+   })
+
+     every() kiểm các phần tử của mảng thỏa mãn điều kiện
+    
+    var isFree = coures.every(function(coure, index){
+       return coures.coin === 0;
+    })
+    console.log(isFree);
+
+    some() 
+    var isFree = coures.some(function(coure, index) {
+        return coures.coin === 0;
+   })
+   console.log(isFree);
+
+     find()
+    var isFree = coures.find(function(coure, index) {
+        return coures.coin === 'ruby';
+        })
+    console.log(isFree);
+
+
+     filter()
+    var listCourses = coures.filter(function(coure, index) {
+        return coure.coin > 100 ;
+    })
+    console.log(listCourses)
+    let getMostFavoriteSport = (coures) =>  coures.filter((aray) => aray.coin<100);
+    console.log(getMostFavoriteSport)
+    
+    
+    // map()
+
+    function courehand(coures, index) {
+        return {
+            id : coures.id,
+            name: `họ và tên : ${coures.name}`,
+            coin: coures.coin,
+            coinText: `tăng lên : ${coures.coin}`,
+            index: index
+        }
+    }
+    
+    var newcourese = coures.map(courehand);
+    console.log(newcourese)
+
+    */
+</script>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Javascript</h1>
+</body>
+<script>
+
+    var courses = [
+        {
+            id: 1,
+            name: 'Javascript',
+            coin: 100
+        },
+        {
+            id: 2,
+            name: 'HTML, CSS',
+            coin: 200,
+        },
+        {
+            id: 3,
+            name: 'RUBY',
+            coin: 250,
+        },
+        {
+            id: 4,
+            name: 'PHP',
+            coin: 300,
+        },
+        {
+            id: 5,
+            name: 'Java',
+            coin: 350,
+        },
+    ]
+    // Biến lưu trữ 
+    // Thực hiện việc lưu trữ
+    /*
+
+    reduce() nhận 2 đối số truyền vào 
+    1 : runction
+    2 : initialization value (giá trị khởi tạo)
+
+
+    accumunlator : biến lưu trữ
+    currebtvalue : giá trị hiện tại
+    currentIndex : chỉ mục của currentvalue
+    originArray : giá trị của array gốc = myinfo nếu thay đổi originArray thì myinfo cũng thay đổi
+
+    */
+
+
+    /*
+     Viết tường minh
+   function coinHand(accumunlator, currebtvalue, currentIndex, originArray){
+
+
+    var total = accumunlator + currebtvalue.coin;
+    console.table({
+        'lượt chạy:' : i,
+        'Biến lưu trữ:' : accumunlator,
+        'Giá khóa học:' : currebtvalue.coin,
+        'Tích trữ được:' : total,
+    })
+    return total;
+   }
+   var totalcoin = courses.reduce(coinHand, 0);
+
+    console.log(totalcoin)
+    */
+    /*
+    // viết ngắn gọn cách hay dùng
+    var totalcoin = courses.reduce(function (accumunlator, currebtvalue) {
+        return accumunlator + currebtvalue.coin;
+    }, 0)
+
+    console.log(totalcoin)
+
+    // Javascrip ES6
+    var allcoin = courses.reduce((a, b) => a + b.coin, 0)
+    console.log(allcoin)
+
+    //  khó quá bài tâp cộng tổng số coin bằng nhiều cách
+    const totalHander = function (accumunlator, currentvalue) {
+        return accumunlator + currentvalue.coin;
+    }
+    function getTotalGold(courses) {
+        return courses.reduce(totalHander, 0);
+    }
+    console.log(getTotalGold(courses));
+
+
+    // cách 2 không cần biến khởi tạo
+
+    var number = [100, 200, 300, 400];
+
+    var totalcoin = number.reduce(function(total, number){
+
+        return total + number;
+    })
+    console.log(totalcoin);
+
+
+    // phương thức  làm phẳng trong 1 arr  có mảng lồng nhau Flat
+
+    var arr = [1,2,3,[4,5,[8,[9]],6,7]]
+
+    var flatarry = arr.reduce(function(flatoutput, item){
+        return flatoutput.concat(item);
+    }, [])
+    console.log(flatarry);
+
+    // console.log(arr.flat(Infinity))
+
+    // chạy vòng for để lấy ra các phần tử trong mảng
+    var num = [1,2,3,[4,5,6]]
+    var item = []
+    for(var a in num){
+        item = item.concat(num[a])
+    }
+
+    console.log(item)
+
+    // ví dụ lấy dữ  ở trong  1 object lồng nhau  dùng hàm concat để nối dữ 2 object với nhau
+
+    var myname = [
+    {
+        name: 'Phan Bá Đức',
+        cours: 
+        {
+            id: 1,
+            title: "sắp nghỉ học, và học cái mới"
+        }
+    },
+    {
+        name: 'Đinh Văn Căn',
+        cours: 
+        {
+            id: 2,
+            title: "Văn học bth, và văn nộp tiền"
+        }
+    },
+    ]
+   var newcourses = myname.reduce( function(cour, number){
+    return cour.concat(number.cours);
+   }, []);
+   console.log(newcourses) ;
+   */
+
+
+
+   // bài tập 
+
+
+   var watchList = [
+  {
+    "Title": "Inception",
+    "Year": "2010",
+    "Rated": "PG-13",
+    "Released": "16 Jul 2010",
+    "Runtime": "148 min",
+    "Genre": "Action, Adventure, Crime",
+    "Director": "Christopher Nolan",
+    "Writer": "Christopher Nolan",
+    "Actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page, Tom Hardy",
+    "Plot": "A thief, who steals corporate secrets through use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.",
+    "Language": "English, Japanese, French",
+    "Country": "USA, UK",
+    "imdbRating": "8.8",
+    "imdbVotes": "1,446,708",
+    "imdbID": "tt1375666",
+    "Type": "movie",
+  },
+  {
+    "Title": "Interstellar",
+    "Year": "2014",
+    "Rated": "PG-13",
+    "Released": "07 Nov 2014",
+    "Runtime": "169 min",
+    "Genre": "Adventure, Drama, Sci-Fi",
+    "Director": "Christopher Nolan",
+    "Writer": "Jonathan Nolan, Christopher Nolan",
+    "Actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
+    "Plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "Language": "English",
+    "Country": "USA, UK",
+    "imdbRating": "8.6",
+    "imdbVotes": "910,366",
+    "imdbID": "tt0816692",
+    "Type": "movie",
+  },
+  {
+    "Title": "The Dark Knight",
+    "Year": "2008",
+    "Rated": "PG-13",
+    "Released": "18 Jul 2008",
+    "Runtime": "152 min",
+    "Genre": "Action, Adventure, Crime",
+    "Director": "Christopher Nolan",
+    "Writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
+    "Actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
+    "Plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
+    "Language": "English, Mandarin",
+    "Country": "USA, UK",
+    "imdbRating": "9.0",
+    "imdbVotes": "1,652,832",
+    "imdbID": "tt0468569",
+    "Type": "movie",
+  },
+  {
+    "Title": "Batman Begins",
+    "Year": "2005",
+    "Rated": "PG-13",
+    "Released": "15 Jun 2005",
+    "Runtime": "140 min",
+    "Genre": "Action, Adventure",
+    "Director": "Christopher Nolan",
+    "Writer": "Bob Kane (characters), David S. Goyer (story), Christopher Nolan (screenplay), David S. Goyer (screenplay)",
+    "Actors": "Christian Bale, Michael Caine, Liam Neeson, Katie Holmes",
+    "Plot": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from the corruption that Scarecrow and the League of Shadows have cast upon it.",
+    "Language": "English, Urdu, Mandarin",
+    "Country": "USA, UK",
+    "imdbRating": "8.3",
+    "imdbVotes": "972,584",
+    "imdbID": "tt0372784",
+    "Type": "movie",
+  },
+  {
+    "Title": "Avatar",
+    "Year": "2009",
+    "Rated": "PG-13",
+    "Released": "18 Dec 2009",
+    "Runtime": "162 min",
+    "Genre": "Action, Adventure, Fantasy",
+    "Director": "James Cameron",
+    "Writer": "James Cameron",
+    "Actors": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang",
+    "Plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "Language": "English, Spanish",
+    "Country": "USA, UK",
+    "imdbRating": "7.9",
+    "imdbVotes": "876,575",
+    "imdbID": "tt0499549",
+    "Type": "movie",
+  }
+];
+
+// tạo hàm getRating
+// Điểm số trung bình IMDB của đạo diễn Christopher Nolan
+// gợi ý: Dùng phương thức filter để lấy ra những bộ phim do Christopher Nolan làm đạo diễn
+// gợi ý: Dùng phương thức reduce để tính tổng điểm IMDB
+// gợi ý: Tính điểm IMDB trung bình
+
+function calculateRating(watchList) {
+    //Lọc các film của đạo diễn Nolan
+    var cnFilm = watchList.filter(function(watchList) {
+      return watchList.Director == 'Christopher Nolan';
+    })
+  
+    //Tính điểm imdb trung bình
+    var total = cnFilm.reduce(function(total, currentFilm) {
+      return Number(total) + Number(currentFilm.imdbRating)//Ép kiểu String (Chuỗi) sang Number (Số) để thực hiện được phép tính
+    }, 0)
+    return total / cnFilm.length
+  }
+  console.log(calculateRating(watchList))
+
+</script>
+
+</html>

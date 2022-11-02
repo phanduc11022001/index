@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Danh sách khóa học</h2>
+        <ul id="list-courses"></ul>
+    </div>
+    <div>
+        <div>
+            <label for="">Name</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label for="">Description</label>
+            <input type="text" name="description">
+        </div>
+        <div>
+            <button id="create">Create</button>
+            <button id="save" style="display: none;">Save</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    var coursesApi = 'http://localhost:3000/posts'
+
+    function start() {
+        getCourses(renderCourses)
+        handleCreateCourses()
+        
+    }
+    start()
+
+    // hàm sử lý
+
+    function getCourses(callback) {
+        fetch(coursesApi)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(callback)
+    }
+    // thêm dữ liệu lên trên data base
+
+    function createCourse(data, callback) {
+        var option = {
+            method:'post',
+            body: JSON.stringify(data),
+            headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+        }
+        fetch(coursesApi, option)
+            .then(function(response) {
+
+                return response.json()
+            })
+            .then(callback)
+    }
+
+
+    // xóa dữ liệu trên database
+
+    function handleDeleteCourse(id) {
+        var option = {
+            method:'delete',
+            headers: {
+            'Content-Type': 'application/json'
+         // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+        }
+        fetch(coursesApi +'/' +id, option)
+            .then(function(response) {
+
+                return response.json()
+            })
+            .then(function() {
+                var courseItem = document.querySelector('.course-item-' + id)
+                if(courseItem) {
+                    courseItem.remove();
+                }
+            })
+    }
+    // thêm dữ liệu
+
+    function handleCreateCourses() {
+        var createBtn = document.querySelector('#create')
+        createBtn.onclick = function() {
+            var name = document.querySelector('input[name="name"]').value;
+            var description = document.querySelector('input[name="description"]').value;
+           
+
+            var dataForm = {
+                name: name,
+                description : description
+            }
+            createCourse(dataForm, function() {
+                getCourses(renderCourses)
+                clear()
+            })
+            
+
+
+        }
+
+    }
+
+    // Update courses
+
+    function upDateCourse(data, callback) {
+        var option = {
+            method:'PUT',
+            body: JSON.stringify(data),
+            headers: {
+            'Content-Type': 'application/json'
+         // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+        }
+        fetch(coursesApi +'/' + data.id, option)
+            .then(function(response) {
+
+                return response.json()
+            })
+            .then(callback)
+
+    }
+
+    function handleUpdateCouese(id) {
+        var saveBtn = document.querySelector('#save')
+            var courseItembtn = document.querySelector('.course-item-' + id)
+        var dataByID = {
+            name : courseItembtn.querySelector('h4').innerText,
+            description : courseItembtn.querySelector('p').innerText,
+        }
+        document.querySelector('input[name="name"]').value = dataByID.name
+        document.querySelector('input[name="description"]').value = dataByID.description
+        saveBtn.style.display = "block";
+
+        saveBtn.onclick = function() {
+            var formData = {
+                id: id,
+                name:  document.querySelector('input[name="name"]').value,
+                description: document.querySelector('input[name="description"]').value,
+            }
+            upDateCourse(formData, function() {
+                getCourses(renderCourses)
+                saveBtn.style.display = "none";
+            })
+        }
+    }
+
+    // đổ dữ liệu ra html
+
+    function renderCourses(courses) {
+        var listcoursesBlock = document.querySelector('#list-courses')
+        var htmls = courses.map(function(course) {
+            return `
+                <li class="course-item-${course.id}">
+                <h4>${course.name}</h4>
+                <p>${course.description}</p>
+                <button onclick="handleDeleteCourse(${course.id})">Xóa</button>
+                <button onclick="handleUpdateCouese(${course.id})">Update</button>
+                </li>
+            `
+        })
+        listcoursesBlock.innerHTML = htmls.join('')
+    }
+
+    function clear() {
+        var name = document.querySelector('input[name="name"]').value =''
+            var description = document.querySelector('input[name="description"]').value = ''
+    }
+</script>
+</html>
