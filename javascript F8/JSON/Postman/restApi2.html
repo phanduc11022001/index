@@ -33,7 +33,7 @@
     function start() {
         getCourses(renderCourses)
         handleCreateCourses()
-        
+        clear() 
     }
     start()
 
@@ -78,7 +78,6 @@
         }
         fetch(coursesApi +'/' +id, option)
             .then(function(response) {
-
                 return response.json()
             })
             .then(function() {
@@ -104,6 +103,8 @@
             createCourse(dataForm, function() {
                 getCourses(renderCourses)
                 clear()
+                same()
+
             })
             
 
@@ -149,11 +150,17 @@
                 name:  document.querySelector('input[name="name"]').value,
                 description: document.querySelector('input[name="description"]').value,
             }
+            if (formData.name === '' && formData.description === '') {
+                return
+            }
             upDateCourse(formData, function() {
                 getCourses(renderCourses)
+                clear() 
                 saveBtn.style.display = "none";
+                
             })
         }
+
     }
 
     // đổ dữ liệu ra html
