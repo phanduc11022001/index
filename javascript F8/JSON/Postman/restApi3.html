@@ -22,6 +22,7 @@
     </div>
     <div>
         <button id="create">Create</button>
+        <button id="save" style="display: none;">update</button>
     </div>
 </body>
 
@@ -73,10 +74,59 @@
             }
             createCourse(dataForm, function() {
                 getCourses(renderCourses)
+                clear() 
             })
         }
     }
-    
+
+    // Sửa dữ liệu từ người dùng
+
+    function updateCourses(data, id, callback) {
+        var option = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+            body: JSON.stringify(data),
+        }
+        fetch(coursesApi, option)
+            .then(function(response) {
+                    return response.json();
+                })
+            .then(callback)
+    }
+
+    function handleEditCourse() {
+        var saveBtn = document.querySelector('#save')
+        var courseItembtn = document.querySelector('.list-course-' + id)
+        var dataById = {
+            name : courseItembtn.document.querySelector('h2').innerText,
+            description : courseItembtn.document.querySelector('p').innerText
+        } 
+        document.querySelector('input[name="name"]').value = dataByID.name,
+        document.querySelector('input[name="description"]').value = dataByID.description
+        saveBtn.style.display = "block"
+        
+        saveBtn.onclick = function() {
+            var dataForm = {
+                id : id,
+                name :  document.querySelector('input[name="name"]').value,
+                description : document.querySelector('input[name="description"]').value
+            }
+            if (dataForm.name === '' && dataForm.description === '') {
+                return
+            }
+            updateCourses(dataForm ,function() {
+                getCourses(renderCourses)
+                clear() 
+                saveBtn.style.display = "none";
+            })
+        }
+
+    }
+
+     
     // Xóa dữ liệu khỏi bảng 
     function handleDeleteCourse(id) {
         var option = {
@@ -108,10 +158,15 @@
                 <h2>${course.name}</h2>
                 <p>${course.description}</p>
                 <button onclick="handleDeleteCourse(${course.id})">Xóa</button>
+                <button onclick="handleEditCourse(${course.id})">sửa</button>
             </li>
                 `
         })
         listcoursesBlock.innerHTML = htmls.join('')
+    }
+    function clear() {
+        var name = document.querySelector('input[name="name"]').value =''
+        var description = document.querySelector('input[name="description"]').value =''
     }
 </script>
 </html>
