@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Cố gắng lên chàng trai</div>
+    <div>
+        <div class="span-content"></div>
+    </div>
+</body>
+
+<script>
+    // Tagged template literals
+    // tạo 1 function và gọi qua 1 function thì đó là tagged templates literels
+    function highlight([first, ...strings], ...values) {
+        return values.reduce(
+            (acc, curr) => [...acc, `<span>${curr} </span>`, strings.shift()],
+            [first]
+        )
+        
+    }
+
+    var brand = 'F8'
+    var course = 'javascript'
+
+   var html = highlight`học lập trình ${course} tại ${brand}!`
+    console.log(html.join(''))
+    document.querySelector('.span-content').innerHTML = html.join('')
+</script>
+
+</html>
