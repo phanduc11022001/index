@@ -56,13 +56,19 @@
 </div>
 </body>
 <script>
+
+    // Tạo 2 biến $ để viết tắt 
+    // khi dùng lại thì không cần dùng đến document.querySelector nữa 
+
     const $ = document.querySelector.bind(document)
     const $$ = document.querySelectorAll.bind(document)
 
+    // 2 biến này được viết tắt từ $ đã được định nghĩa trước ở trên
     const tabs = $$('.tab-item')
     const panes = $$('.tab-pane')
 
-    const tabActive =  $('.tab-item.active')
+    // 
+    const tabActive =  $('.tab-item.active')    
     const line = $('.tabs .line')
     
     // lấy chiều rộng
