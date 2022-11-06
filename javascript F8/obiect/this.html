@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This Keyword</title>
+</head>
+<body>
+    <button>Click me!</button>
+
+</body>
+<script>
+   /**
+    *  This Keyword
+    *  Từ khóa This Trong Javascript đề cập đến đối tượng mà nó thuộc về.
+    *  Đặc tính
+    *  1. Trong 1 phương thức, This tham chiếu tới đối tượng truy cập phương thức(đối tượng trước dấu châm) 
+    *  2. Đứng ngoài phương thức. This tham chiếu tới đối tượng global
+    * 
+    *  Lưu ý :
+    *   + this trong hàn tạo là đại diện cho đối tượng sẽ được tạo 
+    *   + this trong một hàm là undefined khi ở strict mode 
+    *   + các phương thức bind(), call(), apply(), có thể tham chiếu this tới đối tượng khác  
+    *   + Với Arrow function thì this nó sẽ trả về với this ở bên  ngoài. 
+    * 
+   */
+            
+            
+            const  button = document.querySelector('button')
+            button.onclick = function() {
+                 console.dir(this.innerText)
+            }
+ </script>
+</html> 
