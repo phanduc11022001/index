@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Cách sư dụng  của các kiểu</h1>
+    <h2>Apply()</h2>
+    <h2>Call()</h2>
+    <h2>Bind()</h2>
+
+</body>
+
+<script>
+
+    // cách sử dụng và phương pháp dùng 
+
+    /**
+     * Bind method
+     * - trả ra hàm mới với `this` tham chiếu tới `thisArg`
+     * - Không thực hiện gọi hàm
+     * - Nếu được bind kèm `arg1, arg2 , ....` thì các đối số này sẽ được ưu tiên hơn
+    */
+
+   const newfn = fn.bind(this, arg1, arg2, ...) 
+   newfn(arg1, arg2,...)
+
+   /**
+    * Call method
+    * - Thực hiện bind `this` với `thisArg` và thực hiện gọi hàm
+    * - Nhận các đối số cho hàm gốc từ `arg1, arg2, ...`
+   */
+
+   fn.call(thisArg, arg1, ...)
+
+   /**
+    * Apply method
+    * - Thực hiện `this` và thực hiện gọi hàm 
+    * - Nhận cá đối số cho hàm gốc bằng đối số thứ 2 dưới dạng mảng `[arg1, arg2, ...]`
+   */
+  fn.apply(thisArg, [arg1, arg2...])
+</script>
+</html>

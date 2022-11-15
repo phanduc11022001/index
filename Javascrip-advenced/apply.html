@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    /*
+    const teacher = {
+        firstName : 'Minh',
+        lastName: 'Thảo',
+        isOnline:false,
+        goOnline() {
+            this.isOnline = true
+            console.log(`${this.firstName} ${this.lastName}  is Online`)
+        },
+        goOffline() {
+            this.isOffline = false
+            console.log(`${this.firstName} ${this.lastName} is Offline`)
+        }
+    }
+
+    const me = {
+        firstName: 'Đức',
+        lastName: 'Phan',
+        isOnline:false,
+    }
+
+    console.log('Teacher:', teacher.isOnline)
+    teacher.goOnline()
+    console.log('Teacher:', teacher.isOnline)
+
+    console.log('---------------------------')
+
+    console.log('Student:', me.isOnline)
+    teacher.goOnline.apply(me)
+    console.log('Student:', me.isOnline)
+    */
+
+   function Animal(name, weight) {
+    this.name = name
+    this.weight = weight
+   }
+
+   function Parrot() {
+    Animal.apply(this, arguments)
+    this.speak = function() {
+        console.log('Nhà có khách')
+    }
+   }
+
+   const convet = new Parrot('vẹt ', 400)
+   console.log(convet)
+
+</script>
+</html>

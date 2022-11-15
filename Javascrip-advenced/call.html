@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+
+    // Call Method  là phương thức prototype cảu function constructor,
+    // phương thức này được dùng để gọi hàm và cũng có thể bind this cho hàm
+
+    function Animal(name, weight) {
+        thisname = name;
+        this.weight = weight
+    }
+
+    function chicken(name, weight, legs) {
+        Animal.call(this, name, weight)
+        this.legs = legs;
+    }
+
+    function lion(name, weight, hand) {
+        Animal.call(this,name, weight)
+
+        this.hand = hand
+    }
+    const dog = new lion('an', 43, 3)
+    console.log(dog)
+
+    const snake = new chicken('Phan Duc', 53, 2)
+    console.log(snake)    
+
+</script>
+</html>

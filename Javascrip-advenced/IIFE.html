@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>try</h1>
+</body>
+
+<script>
+    // IIFE  : Immediately Invoked Function Expression
+    // Self Invoking Function : hàm tự gọi
+    // là một function expresstion được gọi ngay lập tức
+    // IIFE  là một hàm Private
+    // khi nào thì IIFE : 
+    // khi mà mình muốn đoạn code của mình chạy ngay và 
+    // các đoạn mã và hàm lại không ra khỏi phạm vi global và ảnh hưởng đến các đạon mã bên ngoài
+
+    // các cách chạy  hàm IIFE
+   
+    const app = (function() {
+        // const cars đã được khai báo dưới phạm vi 1 hàm khác thê nên là nốt đã tạo ra 1 phạm vi riêng biệt ở bên ngoài hàm app 
+        // Private
+        const cars = []
+        
+        return {
+            get(index) {
+                return cars[index]
+            },
+            add(car) {
+                cars.push(car)
+            },
+            adit(index, car) {
+                cars[index] = car
+            },
+            delete(index) {
+                cars.splice(index, 1)
+            }
+        }
+    })();
+
+    (function js (x) {
+        const y = (j) => j * x;
+        
+        console.log(y(s()))
+        function j() {
+            return x ** x
+        } 
+        function s() {
+            return j()
+        }
+    })(3)
+</script>
+</html>
