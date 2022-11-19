@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<style>
+  * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .button {
+            position: absolute;
+            outline: none;
+            background-image: linear-gradient(180deg, rgb(205, 229, 203) 0%, rgb(162, 212, 136) 100%);
+            border-radius: 0.4rem;
+            color: black;
+            transition: all 0.3s;
+            border: 1px solid #262626;
+            font-size: 16px;
+            text-align: center;
+            padding: 4px 12px;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        .button:hover {
+            background-image: linear-gradient(180deg, rgb(205, 229, 203) 0%, rgb(162, 212, 136) 100%);
+            color: black;
+            cursor: pointer;
+        }
+
+        .button:focus {
+            background-image: linear-gradient(180deg, rgb(205, 229, 203) 0%, rgb(162, 212, 136) 100%);
+            color: black;
+        }
+
+        .button:disabled {
+            opacity: 0.65;
+            pointer-events: none;
+        }
+    
+</style>
+<body>
+    <!--
+        Props
+
+        - React element:
+            - Sử dụng props giống như với attributes của thẻ HTML
+            - 2 props class, for => className, htmlFor
+            - Phải tuân theo quy ước có sẵn
+        - React components:
+            - Sử dụng props giống nhu đổi số cho Function
+            - Tự do đăt lên props 
+                - Đặt theo cameCase
+                - Có thể bao gồm dấu gạch ngang
+        - Chú ý: 
+            - Props "key" là prop đặc biệt
+            - Props cơ bản là đối số của components
+                => Props có thể là bất cứ kiểu dữ liệu gì
+            - Sử dụng destructuring
+    -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+
+
+    function Button({title, onClick, href}) {
+        let Components = 'button'
+        const props = {}
+
+        if(href) {
+            Components = 'a'
+            props.href = href
+        }
+        if(onclick) {
+            props.onclick = onclick
+        }
+
+        return (
+            <Components {...props} className="button">{title} </Components>
+        )
+    }
+    
+    function App() {
+
+     
+        return (
+            <div id="wrapper">
+              <Button 
+                title="Click Me!"
+                 href="https://www.facebook.com/"
+                onclick={() => console.log(Math.random())}
+              />
+            </div>
+        ) 
+    }
+
+    ReactDOM.render(<App />, document.getElementById('root'))
+
+    </script>
+</body>
+</html>

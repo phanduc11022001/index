@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18.0.0/umd/react-dom.production.min.js"></script> 
+<body>
+    <!--    
+        1. React.createElement() -> React element
+        2. So sánh với document.createElement() -> DOM element
+        3. Thay đổi : id, className, style, ....
+        4. Thêm: text HTML
+        5. Tạo :
+            <h1 title="Hello" class="heading">Hello Gays! </h1>
+        6. Tạo:
+            <ul> 
+                <li>Javascript</li>
+                <li>RactJS</li>
+            </ul>
+        7. Tạo
+            <div class="post-item">
+                <h2 title="Học React tại f8"> Học React tại F8</h2>
+                <p >Học React từ cơ bản đến nâng cao</p>
+
+            </div>
+    -->
+</body>
+<script>
+    // DOM
+
+   const divDOM = document.createElement('div');
+   divDOM.className = "post-item";
+
+    const h2 = document.createElement('h2');
+    h2.title = "Học react tại F8"
+    h2.innerText = 'Học React tại F8';
+    h2.style = "color: red; font-size:30px"
+
+    const p = document.createElement('p')
+    p.innerText = 'Học Reat từ cơ bản đến nâng cao'
+    p.style.color = "yellow"
+    p.style.backgroundColor = "#000"
+
+    divDOM.appendChild(h2)
+    divDOM.appendChild(p)
+    document.body.appendChild(divDOM)
+
+
+
+    // React@17
+    // React.createElement(type, props, children, .... n)
+    /*
+    const dicReact = React.createElement(
+        'div',
+        {class:'post-item'},
+
+        React.createElement('h2',{title:'Học react tại f8'}, 'Học react tại f8'),
+
+        React.createElement('p', null, 'Học react nâng cao tại f8')
+        
+        )
+*/
+    //React@18
+   const root = ReactDOM.createRoot(container)
+   root.render(divDOM)
+</script>
+</html>
