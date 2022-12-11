@@ -27,7 +27,7 @@
 </body>
 
 <script>
-    var coursesApi = 'http://localhost:3000/posts'
+    var coursesApi = 'https://637e1605cfdbfd9a63a6c26f.mockapi.io/user'
 
     function start() {
         getCourses(renderCourses)
@@ -81,7 +81,7 @@
 
     // Sửa dữ liệu từ người dùng
 
-    function updateCourses(data, id, callback) {
+    function updateCourses(data, callback) {
         var option = {
             method: 'POST',
             headers: {
@@ -90,22 +90,22 @@
     },
             body: JSON.stringify(data),
         }
-        fetch(coursesApi, option)
+        fetch(coursesApi + '/' + data.id, option)
             .then(function(response) {
                     return response.json();
                 })
             .then(callback)
     }
 
-    function handleEditCourse() {
+    function handleEditCourse(id) {
         var saveBtn = document.querySelector('#save')
         var courseItembtn = document.querySelector('.list-course-' + id)
         var dataById = { 
-            name : courseItembtn.document.querySelector('h2').innerText,
-            description : courseItembtn.document.querySelector('p').innerText
+            name : courseItembtn.querySelector('h2').innerText,
+            description : courseItembtn.querySelector('p').innerText
         } 
-        document.querySelector('input[name="name"]').value = dataByID.name,
-        document.querySelector('input[name="description"]').value = dataByID.description
+        document.querySelector('input[name="name"]').value = dataById.name,
+        document.querySelector('input[name="description"]').value = dataById.description
         saveBtn.style.display = "block"
         
         saveBtn.onclick = function() {

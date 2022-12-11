@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>Danh sách khóa học</h2>
+        <ul id="list-courses"></ul>
+    </div>
+
+    <div>
+        <label for="">Name</label>
+        <input type="text" name="name">
+    </div>
+    <div>
+        <label for="">Desciption</label>
+        <input type="text" name="description">
+    </div>
+
+    <div>
+        <button id="create">Create</button>
+        <button id="save"style="display:none" >Save</button>
+    </div>
+</body>
+
+<script>
+    const courseApi = 'http://localhost:3000/courses'
+
+    function start() {
+        getCourses(renderCourses)
+        handleCreate()
+    }
+
+    start()
+
+    // hàm xử lý các sự kiện
+    function getCourses(callback) {
+        fetch(courseApi)
+            .then(function (response) {
+                return response.json()
+            })
+            .then(callback)
+    }
+
+    // Create a new course
+    function creareCourses(data, callback) {
+        var option = {
+            method : "post",
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: JSON.stringify(data),
+        }
+
+        fetch(courseApi, option)
+            .then(function(response) {
+                return response.json()
+            })
+            .then(callback)
+    }
+
+    function handleCreate() {
+        const createBtn = document.querySelector('#create')
+        createBtn.onclick = function() {
+            var name = document.querySelector('input[name="name"]').value
+            var description = document.querySelector('input[name="description"]').value
+            var dataForm = {
+                name : name,
+                description : description
+            }
+            creareCourses(dataForm, function() {
+                getCourses(renderCourses)
+                claer()
+            })
+        }
+    }
+
+    // Delete a course
+    function handleDeleteCourses (id) {
+        var option ={
+            method:"Delete",
+            headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+        }
+        fetch(courseApi + '/' + id, option)
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function() {
+                var coursesItem = document.querySelector('.list-course-' + id)
+                if(coursesItem) {
+                    coursesItem.remove()
+                }
+            })
+    }
+
+    // Edit a course
+    function editCourses(data, callback) {
+        var option ={
+            method:"PUT",
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            body: JSON.stringify(data),
+        }
+        fetch(courseApi + '/' + data.id, option)
+            .then(function(response) {
+                return response.json()
+            })
+            .then(callback)
+    }
+
+    function handleEditCourses(id) {
+        var saveBtn = document.querySelector('#save')
+        var courseItembtn = document.querySelector('.list-course-' + id)
+        var dataById = {
+            name : courseItembtn.querySelector('h2').innerText,
+            description : courseItembtn.querySelector('span').innerText
+        }
+        document.querySelector('input[name="name"]').value = dataById.name
+        document.querySelector('input[name="description"]').value = dataById.description
+        saveBtn.style.display = "block"
+            
+            saveBtn.onclick = function() {
+               dataForm = {
+                id : id,
+                name : document.querySelector('input[name="name"]').value,
+                description : document.querySelector('input[name="description"]').value
+               }
+               if(dataForm.name === '' && dataForm.description === '') {
+                    return 
+               }
+               editCourses(dataForm, function() {
+                getCourses(renderCourses)
+                claer()
+                saveBtn.style.display = "none"
+               })
+            }
+    }
+
+    // Đổ dữ liệu ra ngoài mặt người dùng
+    function renderCourses(courses) {
+        const listcoursesBlock = document.querySelector('#list-courses')
+        const htmls = courses.map(course => {
+            return `
+                <li class="list-course-${course.id}">   
+                    <h2>${course.name}</h2>
+                    <span>${course.description}</span>
+                    <button onclick="handleDeleteCourses(${course.id})">Xóa</button>
+                    <button onclick="handleEditCourses(${course.id})">Edit</button>
+                </li>
+                `
+        })
+        listcoursesBlock.innerHTML = htmls.join('')
+    }
+
+    // claer code khi người dùng ấn create
+    function claer() {
+        document.querySelector('input[name="name"]').value = ''
+        document.querySelector('input[name="description"]').value = ''
+
+
+    }
+</script>
+</html>

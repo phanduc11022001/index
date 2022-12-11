@@ -72,8 +72,8 @@
     <script type="text/babel">
 
 
-
-    function Button({title, onClick, href}) {
+   // Tạo 1 button 
+    function Button ({title, href, onClick}) {
         let Components = 'button'
         const props = {}
 
@@ -81,27 +81,26 @@
             Components = 'a'
             props.href = href
         }
-        if(onclick) {
-            props.onclick = onclick
+
+        if(onClick) {
+            props.onClick = onClick
         }
-
         return (
-            <Components {...props} className="button">{title} </Components>
+            <Components {...props} className ="button" >{title}</Components>
         )
-    }
+    } 
     
+    // rander ra ngoài 
     function App() {
-
-     
         return (
-            <div id="wrapper">
-              <Button 
-                title="Click Me!"
-                 href="https://www.facebook.com/"
-                onclick={() => console.log(Math.random())}
-              />
+            <div className="wrapper">
+                <Button
+                    title ="Click me!"
+                    href = "https://www.youtube.com/"
+                    onClick = {() => console.log(Math.random())}
+                />    
             </div>
-        ) 
+        )
     }
 
     ReactDOM.render(<App />, document.getElementById('root'))
