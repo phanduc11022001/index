@@ -10,31 +10,29 @@
     
 </body>
 <script>
-    /*
-    class Courses {
+    class Coures{
         constructor(name, price) {
-            this.name = name,
-            this.price = price
+            this.name = name;
+            this.price = price;
         }
-        getName() {
-            return this.name
-        }
-        
     }
-    const php = new Courses('php', 10000)
-    const javascrip = new Courses('javascrip', 32982146)
-    console.log(php.name)
-    console.log(javascrip.getName())
-    */
 
-    // Default paramater values
-    
-    /*
-   function logger(log, type = 'log') {
-        
-    console[type](log)
+    class Post extends Coures{
+        constructor(name, price,age, univer) {
+            super(name, price);
+            this.age = age;
+            this.univer = univer;
+        }
     }
-logger('Đinh Văn Căn', 'error')
-*/
+
+    class fullName extends Post{
+        constructor(name, price, age, univer, address) {
+            super(name, price, age, univer);
+            this.address = address
+        }
+    }
+
+    const person = new fullName()
+    console.log(person)
 </script>
 </html>
